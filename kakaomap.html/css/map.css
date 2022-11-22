@@ -2,9 +2,10 @@
     box-sizing: border-box;
     font-size: 14px;
 }
+
 html, body {
     margin: 0;
-    width: 100%;
+    width: 100%;/*화면전채가져오는거*/
     height: 100%;
 }
 
@@ -15,14 +16,14 @@ html, body {
 }
 
 aside {
-    position: fixed;
-    z-index: 10;
-    top: 0px;
+    position: fixed;/*스크롤을 내려도 고정되게함*/
+    z-index: 10;/*켭칠떄 위로올라오는 순번*/
+    top: 0px;/*왼쪽위에 딱붙게 만드는거*/
     left: 0px;
     width: 390px;
     height: 100%;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.28);
-    background-color: white;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.28);/*rmflawkgyrhk xnaudehdlTrp wnsmsrj*/
+    background-color: white;/*배경색*/
 }
 #map {
     width: 100%;
@@ -30,9 +31,119 @@ aside {
 }
 
 header{
+    padding: 20px 20px 2px;/*이만큼 패팅을줌*/
     height: 116px;
     background-color: #258fff;
 }
+
+.title{
+    display: flex;/*밑으로 배치되야할걸 옆으로 배치되게함*/
+    justify-content: space-between;/*좌우에 바짝붙여야하니 이걸줌 */
+    align-items: flex-start;/*플랙스에서 왼족에서 시작하게 붙여놓음 */
+    height: 48px;
+    padding-top:5px ;/*위쪽으로 패팅을 줌 패딩과 마진의차이는 밀어낼떄는 마진 안쪽으로 컨트롤할려면 패딩 마진은 밖으로 넓어지고 패딩은 밖으로 넓어짐*/
+}
+
+.fa-bars {
+    margin-right:10px ;
+    padding: 1px 0px;
+    font-size: 20px;
+    color: white;
+
+    cursor: pointer;
+}
+
+.title-text {
+    margin: 0;
+    font-weight: 400;
+    color: white;
+    line-height: 20px;/*글자줄간의 높이 글자랑 딱맞으려면 폰트 사이즈랑 똑같이 넣어주면됨*/
+    font-size: 20px;
+    cursor: pointer;/*이거위에 마우스올렸을때 마우스 커서 모양 바꾸게해줌*/
+}
+
+.map-text {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.check-location {
+    display: flex;
+    align-items: center;/*가운대정렬 한줄로 정렬해줄려고*/
+    
+    color: white;
+}
+
+#my-location {
+    display: none;
+}
+
+.my-location-label{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    cursor: pointer;
+}
+#my-location + .my-location-label::before{/*체크가안된상태*/
+    content: "";
+    display: inline-block;
+    margin-right: 5px;
+    width: 10px;
+    height:10px;
+    border: 2px solid #ffffff90;
+    border-radius: 10px;
+    
+}
+#my-location:checked + .my-location-label::before{/*체크가 된상태*/
+    display: inline-block;
+    content: "✔️";
+
+    margin-right: 5px;
+    width: 10px;
+    height:10px;
+    border-radius: 10px;
+    
+    font-size: 10px;
+    color: #258fff;
+    font-weight: 700;
+    line-height: 10px;
+    background-color: white;
+    
+}
+
+.search{
+    display: flex;
+    box-shadow: 0px 2px 52px rgba(0,0,0,0.2);
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 3px;/*태두리를 둥글개*/
+    width: 100%;
+    height: 46px;
+    background-color: white;
+    overflow: hidden;/*넘어서는 부분 가리기 밑에있는거 저건 직각이라서 라운드 넘어가서 가라는거*/
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    padding-left: 15px;/*왼쪽끝에 빠짝붙지않고 쫌떨어져서 글자가 나오게할려고*/
+    width: 80%;
+    height: 100%;
+}
+
+.search-input::-webkit-input-placeholder{/*<--가상선택자 스크롤바 같은거 모양봐꿔줄수있음*/
+    color: #9e9e9e;
+    font-weight: 500;
+}
+
+.fa-magnifying-glass {
+    padding: 15px;/*패딩영역까지는 클릭 이벤트가 적용됨 마진은 안됨 마진줘도 모양은 안봐뀜 버튼사이사이에 마진주는걸로 활용가능*/
+    font-size: 16px;
+    color: #dbdbdb;
+    cursor: pointer;
+}
+
 .menu {
     display: flex;
 
@@ -44,9 +155,11 @@ header{
     background-color: #258fff;
     list-style-type: none;
 }
+
 .menu li {
     padding: 12px 9px;
 }
+
 .mainmenutab{
     display: inline-block;
     padding: 4px 7px;
@@ -57,8 +170,65 @@ header{
     color: white;
     text-decoration: none;
 }
+
 .tap-selected{
     border-radius:4px;
     background-color: #1467dd;
     font-weight: 700;
+}
+.report-error{
+    border-bottom:1px solid #f0f0f0 ;
+    height: 84px;
+}
+.info {
+    border-bottom:1px solid #f0f0f0;
+    padding: 23px 0px 19px 19px;
+    height: 120.5px;
+}
+.title-around{
+    margin: 0;
+    padding-left:8px ;
+    font-size: 13px;
+}
+.list-around{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style-type:none ;
+    margin: 0;
+    padding: 0;
+    padding-top:8px ;
+
+}
+
+.button-around {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    border: none;
+    width: 50px;
+    height: 48px;
+    background-color: #ffffff00;
+}
+.button-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 10px;
+    border: 10x solid #f0f0f0;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+
+    overflow: hidden;
+}
+.button-icon i {
+    color: #555555;
+}
+.button-title {
+    font-size: 10px;
+    color: #a0a0a0;
+    
 }
